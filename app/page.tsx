@@ -124,14 +124,14 @@ export default function Page() {
             {/* Main layout */}
             <div className="flex-1 flex overflow-hidden">
               {/* Left sidebar — chapters */}
-              <aside className="hidden lg:flex w-72 flex-col border-r border-border bg-card/40 backdrop-blur-sm shrink-0">
-                <div className="p-4 border-b border-border">
+              <aside className="hidden lg:flex w-56 flex-col border-r border-border bg-card/40 backdrop-blur-sm shrink-0">
+                <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <BookOpen className="size-4 text-primary" />
                     <span className="text-sm font-semibold text-foreground">Chapters</span>
                   </div>
                 </div>
-                <ScrollArea className="flex-1 p-3">
+                <ScrollArea className="flex-1 p-2">
                   <ChapterNav
                     chapters={chapters}
                     activeChapter={activeChapter}
@@ -145,23 +145,28 @@ export default function Page() {
                 <ChapterContent chapter={currentChapter} />
               </main>
 
-              {/* Right sidebar — reference + calculator */}
-              <aside className="hidden xl:flex w-80 flex-col border-l border-border bg-card/40 backdrop-blur-sm shrink-0 overflow-y-auto">
-                <div className="p-4 border-b border-border">
+              {/* Right sidebar — quick reference (only on 2xl+) */}
+              <aside className="hidden 2xl:flex w-56 flex-col border-l border-border bg-card/40 backdrop-blur-sm shrink-0 overflow-y-auto">
+                <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <BookOpen className="size-4 text-primary" />
                     <span className="text-sm font-semibold text-foreground">Reference</span>
                   </div>
                 </div>
-                <div className="flex-1 p-4">
+                <div className="flex-1 p-3">
                   <QuickReference />
                 </div>
-                <Separator />
-                <div className="p-4">
-                  <div className="flex items-center gap-2 mb-4">
+              </aside>
+
+              {/* Far-right sidebar — calculator, opposite side from chapters, visible from lg */}
+              <aside className="hidden lg:flex w-56 flex-col border-l border-border bg-card/50 backdrop-blur-sm shrink-0 overflow-y-auto">
+                <div className="p-3 border-b border-border">
+                  <div className="flex items-center gap-2">
                     <CalcIcon className="size-4 text-primary" />
                     <span className="text-sm font-semibold text-foreground">Calculator</span>
                   </div>
+                </div>
+                <div className="p-3 flex items-start justify-center">
                   <Calculator />
                 </div>
               </aside>
@@ -201,7 +206,7 @@ function BottomCalculatorBar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className="border-t border-border bg-card/90 backdrop-blur-sm shrink-0">
+    <div className="lg:hidden border-t border-border bg-card/90 backdrop-blur-sm shrink-0">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors"
