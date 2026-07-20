@@ -1,66 +1,67 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { AppHeader } from '@/components/AppHeader'
-import { ChapterNav } from '@/components/ChapterNav'
-import { ChapterContent } from '@/components/ChapterContent'
-import { Calculator } from '@/components/Calculator'
-import { QuickReference } from '@/components/QuickReference'
-import { MockExam } from '@/components/MockExam'
-import { ThreeDBackground } from '@/components/ThreeDBackground'
-import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import { chapters } from '@/lib/toc-data'
+import { useState } from "react";
+import { AppHeader } from "@/components/AppHeader";
+import { ChapterNav } from "@/components/ChapterNav";
+import { ChapterContent } from "@/components/ChapterContent";
+import { Calculator } from "@/components/Calculator";
+import { QuickReference } from "@/components/QuickReference";
+import { MockExam } from "@/components/MockExam";
+import { ThreeDBackground } from "@/components/ThreeDBackground";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { chapters } from "@/lib/toc-data";
 import {
   Calculator as CalcIcon,
   BookOpen,
   Menu,
   X,
   ClipboardList,
-} from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
-type ActiveTab = 'study' | 'exam'
+type ActiveTab = "study" | "exam";
 
 export default function Page() {
-  const [activeChapter, setActiveChapter] = useState(chapters[0].id)
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState<ActiveTab>('study')
+  const [activeChapter, setActiveChapter] = useState(chapters[0].id);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<ActiveTab>("study");
 
-  const currentChapter = chapters.find((c) => c.id === activeChapter) ?? chapters[0]
+  const currentChapter =
+    chapters.find((c) => c.id === activeChapter) ?? chapters[0];
 
   return (
     <div className="flex flex-col min-h-screen bg-background relative">
-      {/* 3D floating background — rendered behind everything */}
+      {/* 3D floating background */}
       <ThreeDBackground />
 
-      {/* All foreground content sits above the 3D canvas */}
+      {/* all foreground content sits above the 3D canvas */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <AppHeader />
 
-        {/* Tab switcher */}
+        {/* tab switcher */}
         <div className="border-b border-border bg-card/70 backdrop-blur-sm shrink-0">
           <div className="max-w-screen-2xl mx-auto px-4 flex items-center gap-1 h-11">
             <button
-              onClick={() => setActiveTab('study')}
+              onClick={() => setActiveTab("study")}
               className={cn(
-                'flex items-center gap-2 px-4 h-full text-sm font-medium border-b-2 transition-colors',
-                activeTab === 'study'
-                  ? 'border-primary text-foreground'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
+                "flex items-center gap-2 px-4 h-full text-sm font-medium border-b-2 transition-colors",
+                activeTab === "study"
+                  ? "border-primary text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
               <BookOpen className="size-4" />
               Study Guide
             </button>
             <button
-              onClick={() => setActiveTab('exam')}
+              onClick={() => setActiveTab("exam")}
               className={cn(
-                'flex items-center gap-2 px-4 h-full text-sm font-medium border-b-2 transition-colors',
-                activeTab === 'exam'
-                  ? 'border-primary text-foreground'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
+                "flex items-center gap-2 px-4 h-full text-sm font-medium border-b-2 transition-colors",
+                activeTab === "exam"
+                  ? "border-primary text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
               <ClipboardList className="size-4" />
@@ -69,10 +70,10 @@ export default function Page() {
           </div>
         </div>
 
-        {/* ── STUDY TAB ── */}
-        {activeTab === 'study' && (
+        {/* STUDY TAB */}
+        {activeTab === "study" && (
           <>
-            {/* Mobile sidebar toggle */}
+            {/* mobile sidebar toggle */}
             <div className="lg:hidden flex items-center gap-2 px-4 py-2 border-b border-border bg-card/50">
               <Button
                 variant="outline"
@@ -80,13 +81,19 @@ export default function Page() {
                 onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
                 className="gap-2"
               >
-                {mobileSidebarOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-                {mobileSidebarOpen ? 'Close' : 'Chapters'}
+                {mobileSidebarOpen ? (
+                  <X className="size-4" />
+                ) : (
+                  <Menu className="size-4" />
+                )}
+                {mobileSidebarOpen ? "Close" : "Chapters"}
               </Button>
-              <span className="text-sm text-muted-foreground">{currentChapter.title}</span>
+              <span className="text-sm text-muted-foreground">
+                {currentChapter.title}
+              </span>
             </div>
 
-            {/* Mobile sidebar overlay */}
+            {/* mobile sidebar overlay */}
             {mobileSidebarOpen && (
               <div className="lg:hidden fixed inset-0 z-50 flex">
                 <div
@@ -112,8 +119,8 @@ export default function Page() {
                       chapters={chapters}
                       activeChapter={activeChapter}
                       onSelectChapter={(id) => {
-                        setActiveChapter(id)
-                        setMobileSidebarOpen(false)
+                        setActiveChapter(id);
+                        setMobileSidebarOpen(false);
                       }}
                     />
                   </ScrollArea>
@@ -121,14 +128,16 @@ export default function Page() {
               </div>
             )}
 
-            {/* Main layout */}
+            {/* main layout */}
             <div className="flex-1 flex overflow-hidden">
-              {/* Left sidebar — chapters */}
+              {/* left sidebar chapters */}
               <aside className="hidden lg:flex w-56 flex-col border-r border-border bg-card/40 backdrop-blur-sm shrink-0">
                 <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <BookOpen className="size-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">Chapters</span>
+                    <span className="text-sm font-semibold text-foreground">
+                      Chapters
+                    </span>
                   </div>
                 </div>
                 <ScrollArea className="flex-1 p-2">
@@ -140,17 +149,19 @@ export default function Page() {
                 </ScrollArea>
               </aside>
 
-              {/* Center — chapter content */}
+              {/* center chapter content */}
               <main className="flex-1 min-w-0 overflow-hidden bg-background/60 backdrop-blur-sm">
                 <ChapterContent chapter={currentChapter} />
               </main>
 
-              {/* Right sidebar — quick reference (only on 2xl+) */}
+              {/* right sidebar */}
               <aside className="hidden 2xl:flex w-56 flex-col border-l border-border bg-card/40 backdrop-blur-sm shrink-0 overflow-y-auto">
                 <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <BookOpen className="size-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">Reference</span>
+                    <span className="text-sm font-semibold text-foreground">
+                      Reference
+                    </span>
                   </div>
                 </div>
                 <div className="flex-1 p-3">
@@ -158,12 +169,14 @@ export default function Page() {
                 </div>
               </aside>
 
-              {/* Far-right sidebar — calculator, opposite side from chapters, visible from lg */}
+              {/* far right sidebar */}
               <aside className="hidden lg:flex w-56 flex-col border-l border-border bg-card/50 backdrop-blur-sm shrink-0 overflow-y-auto">
                 <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
                     <CalcIcon className="size-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">Calculator</span>
+                    <span className="text-sm font-semibold text-foreground">
+                      Calculator
+                    </span>
                   </div>
                 </div>
                 <div className="p-3 flex items-start justify-center">
@@ -171,39 +184,40 @@ export default function Page() {
                 </div>
               </aside>
             </div>
-
           </>
         )}
 
-        {/* ── EXAM TAB ── */}
-        {activeTab === 'exam' && (
+        {/* EXAM TAB */}
+        {activeTab === "exam" && (
           <div className="flex-1 overflow-hidden bg-background/60 backdrop-blur-sm">
             <MockExam />
           </div>
         )}
 
-        {/* ── BOTTOM CALCULATOR BAR ── always visible */}
+        {/* BOTTOM CALCULATOR BAR */}
         <BottomCalculatorBar />
 
-        {/* Footer */}
+        {/* footer */}
         <footer className="border-t border-border bg-card/80 backdrop-blur-sm py-4 px-6 shrink-0">
           <div className="max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-xs text-muted-foreground">
               Theory of Computation Interactive Study Guide
             </p>
             <p className="text-xs text-muted-foreground">
-              Developed by{' '}
-              <span className="font-semibold text-foreground tracking-wide">Yishak</span>
+              Developed by{" "}
+              <span className="font-semibold text-foreground tracking-wide">
+                Yishak
+              </span>
             </p>
           </div>
         </footer>
       </div>
     </div>
-  )
+  );
 }
 
 function BottomCalculatorBar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="lg:hidden border-t border-border bg-card/90 backdrop-blur-sm shrink-0">
@@ -218,7 +232,7 @@ function BottomCalculatorBar() {
           <span>Calculator</span>
         </div>
         <span className="text-xs text-muted-foreground select-none">
-          {open ? '▼ Hide' : '▲ Show'}
+          {open ? "▼ Hide" : "▲ Show"}
         </span>
       </button>
       {open && (
@@ -230,5 +244,5 @@ function BottomCalculatorBar() {
         </div>
       )}
     </div>
-  )
+  );
 }
