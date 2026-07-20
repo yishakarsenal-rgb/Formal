@@ -6,10 +6,10 @@ __v0_jsx-dev-runtime.ts
 .v0-trash/
 .vercel/
 
-# Environment variables
+# environment variables
 .env*.local
 
-# Common ignores
+# common ignores
 node_modules
 .next/
 .DS_Store
