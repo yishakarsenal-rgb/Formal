@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Delete, Equal } from "lucide-react";
 
 type CalcButton = {
   label: string | React.ReactNode;
@@ -154,7 +152,7 @@ export function Calculator() {
     { label: "+", value: "+", type: "operator" },
     { label: "0", value: "0", type: "number", span: 2 },
     { label: ".", value: ".", type: "number" },
-    { label: <Equal className="size-4" />, value: "=", type: "equals" },
+    { label: "=", value: "=", type: "equals" },
   ];
 
   const handleButton = (btn: CalcButton) => {
@@ -203,10 +201,10 @@ export function Calculator() {
         <div className="px-4 pt-3 flex justify-end">
           <button
             onClick={backspace}
-            className="p-1.5 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            className="p-1.5 rounded-md text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
             aria-label="Backspace"
           >
-            <Delete className="size-4" />
+            Del
           </button>
         </div>
 

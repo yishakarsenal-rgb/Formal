@@ -4,7 +4,6 @@ import { ConceptSection as IConceptSection } from "@/lib/toc-data";
 import { ExampleCard } from "./ExampleCard";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { FlaskConical } from "lucide-react";
 
 interface ConceptSectionProps {
   section: IConceptSection;
@@ -110,7 +109,6 @@ export function ConceptSectionView({ section }: ConceptSectionProps) {
           <Separator />
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <FlaskConical className="size-4 text-primary" />
               <h4 className="text-sm font-semibold text-foreground">
                 Examples
               </h4>

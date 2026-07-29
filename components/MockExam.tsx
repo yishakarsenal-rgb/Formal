@@ -10,19 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
-import {
-  ClipboardList,
-  Timer,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle,
-  ChevronLeft,
-  ChevronRight,
-  Flag,
-  RotateCcw,
-  TrendingUp,
-  Award,
-} from "lucide-react";
 
 type ExamPhase = "setup" | "running" | "review" | "results";
 
@@ -86,9 +73,6 @@ function SetupScreen({
       <div className="w-full max-w-lg">
         {/* header */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center size-16 rounded-2xl bg-primary/10 mb-4">
-            <ClipboardList className="size-8 text-primary" />
-          </div>
           <h2 className="text-3xl font-bold text-foreground mb-2">
             Mock Examination
           </h2>
@@ -153,9 +137,6 @@ function SetupScreen({
 
           {/* timer info */}
           <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/60 border border-border">
-            <div className="p-2 rounded-lg bg-primary/10">
-              <Timer className="size-4 text-primary" />
-            </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-medium text-foreground">Time Limit</p>
               <p className="text-xs text-muted-foreground">
@@ -173,7 +154,6 @@ function SetupScreen({
             size="lg"
             className="w-full font-semibold text-base"
           >
-            <ClipboardList data-icon="inline-start" />
             Begin Examination ({finalCount} question
             {finalCount !== 1 ? "s" : ""})
           </Button>
@@ -186,14 +166,13 @@ function SetupScreen({
               label: "Total Questions",
               value: examQuestions.length,
             },
-            { label: "Chapters", value: 6, icon: TrendingUp },
-            { label: "Time Limit", value: "120 min", icon: Timer },
-          ].map(({ label, value, icon: Icon }) => (
+            { label: "Chapters", value: 6 },
+            { label: "Time Limit", value: "120 min" },
+          ].map(({ label, value }) => (
             <div
               key={label}
               className="bg-card border border-border rounded-xl p-3 text-center"
             >
-              <Icon className="size-4 text-muted-foreground mx-auto mb-1" />
               <p className="text-lg font-bold text-foreground">{value}</p>
               <p className="text-xs text-muted-foreground">{label}</p>
             </div>
@@ -247,7 +226,6 @@ function RunningExam({
 
   const q = questions[current];
   const answered = answers.filter((a) => a !== null).length;
-  const timerPct = (timeLeft / EXAM_TIME_SECONDS) * 100;
   const timerWarning = timeLeft < 600; // last 10 minutes
 
   function selectAnswer(idx: number) {
@@ -278,7 +256,6 @@ function RunningExam({
               : "bg-muted text-foreground",
           )}
         >
-          <Timer className="size-4" />
           {formatTime(timeLeft)}
         </div>
         <div className="flex-1 min-w-0">
@@ -381,8 +358,7 @@ function RunningExam({
               onClick={toggleFlag}
               className={cn(flagged[current] && "text-amber-500")}
             >
-              <Flag data-icon="inline-start" />
-              {flagged[current] ? "Flagged" : "Flag"}
+              {flagged[current] ? "★ Flagged" : "☆ Flag"}
             </Button>
             <div className="flex gap-2">
               <Button
@@ -391,8 +367,7 @@ function RunningExam({
                 onClick={() => setCurrent(Math.max(0, current - 1))}
                 disabled={current === 0}
               >
-                <ChevronLeft data-icon="inline-start" />
-                Previous
+                ← Previous
               </Button>
               <Button
                 variant="outline"
@@ -402,8 +377,7 @@ function RunningExam({
                 }
                 disabled={current === questions.length - 1}
               >
-                Next
-                <ChevronRight data-icon="inline-end" />
+                Next →
               </Button>
             </div>
           </div>
@@ -415,9 +389,6 @@ function RunningExam({
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
           <div className="bg-card border border-border rounded-2xl p-6 shadow-xl w-full max-w-sm">
             <div className="flex items-center gap-3 mb-4">
-              <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
-                <AlertTriangle className="size-5 text-amber-600 dark:text-amber-400" />
-              </div>
               <h3 className="font-bold text-foreground">Submit Examination?</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-1">
@@ -451,7 +422,7 @@ function RunningExam({
   );
 }
 
-// ─── Results Screen ────────────────────────────────────────────────────────────
+// Results Screen
 function ResultsScreen({
   questions,
   answers,
@@ -496,7 +467,6 @@ function ResultsScreen({
         {/* Score banner */}
         <div className="bg-card border border-border rounded-2xl p-6 text-center shadow-sm">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Award className="size-6 text-primary" />
             <h2 className="text-xl font-bold text-foreground">
               Examination Results
             </h2>
@@ -516,7 +486,6 @@ function ResultsScreen({
         {/* Per-chapter breakdown */}
         <div className="bg-card border border-border rounded-2xl p-4 shadow-sm">
           <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-            <TrendingUp className="size-4 text-primary" />
             Performance by Chapter
           </h3>
           <div className="flex flex-col gap-2">
@@ -555,11 +524,14 @@ function ResultsScreen({
                     onClick={() => setReviewIdx(reviewIdx === i ? null : i)}
                     className="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-colors text-left"
                   >
-                    {isCorrect ? (
-                      <CheckCircle2 className="size-4 text-emerald-500 shrink-0" />
-                    ) : (
-                      <XCircle className="size-4 text-red-500 shrink-0" />
-                    )}
+                    <span
+                      className={cn(
+                        "text-sm font-bold shrink-0",
+                        isCorrect ? "text-emerald-500" : "text-red-500",
+                      )}
+                    >
+                      {isCorrect ? "✓" : "✗"}
+                    </span>
                     <span className="text-xs font-medium text-muted-foreground w-5 shrink-0">
                       {i + 1}.
                     </span>
@@ -618,11 +590,9 @@ function ResultsScreen({
         {/* Action buttons */}
         <div className="flex gap-3 pb-4">
           <Button variant="outline" className="flex-1" onClick={onRetry}>
-            <RotateCcw data-icon="inline-start" />
             Retry Same Questions
           </Button>
           <Button className="flex-1" onClick={onNewExam}>
-            <ClipboardList data-icon="inline-start" />
             New Examination
           </Button>
         </div>
@@ -631,7 +601,7 @@ function ResultsScreen({
   );
 }
 
-// ─── Main MockExam ─────────────────────────────────────────────────────────────
+// Main MockExam
 export function MockExam() {
   const [phase, setPhase] = useState<ExamPhase>("setup");
   const [activeQuestions, setActiveQuestions] = useState<ExamQuestion[]>([]);

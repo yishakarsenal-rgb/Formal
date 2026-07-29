@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Cpu, Sun, Moon } from "lucide-react";
 
 export function AppHeader() {
   const [dark, setDark] = useState(false);
@@ -11,7 +10,7 @@ export function AppHeader() {
   function applyTheme(isDark: boolean) {
     const html = document.documentElement;
     html.classList.toggle("dark", isDark);
-    const bg = isDark ? "#1a2744" : "#bae0f7";
+    const bg = isDark ? "#000000" : "#ffffff";
     html.style.backgroundColor = bg;
     document.body.style.backgroundColor = bg;
     localStorage.setItem("theme", isDark ? "dark" : "light");
@@ -38,9 +37,6 @@ export function AppHeader() {
     <header className="border-b border-border bg-card/80 backdrop-blur supports-[backdrop-filter]:bg-card/60 sticky top-0 z-40">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-4">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary rounded-lg shrink-0">
-            <Cpu className="size-5 text-primary-foreground" />
-          </div>
           <div>
             <h1 className="text-xl font-bold text-foreground leading-tight">
               Theory of Computation
@@ -63,12 +59,8 @@ export function AppHeader() {
             size="sm"
             onClick={toggleDark}
             aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-            className="gap-1.5"
           >
-            {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
-            <span className="hidden sm:inline text-xs">
-              {dark ? "Light" : "Dark"}
-            </span>
+            <span className="text-xs">{dark ? "Light" : "Dark"}</span>
           </Button>
         </div>
       </div>
