@@ -10,13 +10,7 @@ import { MockExam } from "@/components/MockExam";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { chapters } from "@/lib/toc-data";
-import {
-  Calculator as CalcIcon,
-  BookOpen,
-  Menu,
-  X,
-  ClipboardList,
-} from "lucide-react";
+import { X, ClipboardList } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
