@@ -20,7 +20,6 @@ import {
   ChevronRight,
   Flag,
   RotateCcw,
-  BookOpen,
   TrendingUp,
   Award,
 } from "lucide-react";
@@ -186,7 +185,6 @@ function SetupScreen({
             {
               label: "Total Questions",
               value: examQuestions.length,
-              icon: BookOpen,
             },
             { label: "Chapters", value: 6, icon: TrendingUp },
             { label: "Time Limit", value: "120 min", icon: Timer },
