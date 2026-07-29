@@ -87,15 +87,15 @@
 /* dark mode */
 html.dark {
   color-scheme: dark;
-  --background: oklch(11.983% 0.02305 226.595);
+  --background: oklch(12.237% 0.02165 236.602);
   --foreground: oklch(0.94 0.02 230);
-  --card: oklch(11.911% 0.02194 221.579);
+  --card: oklch(0.25 0.055 240);
   --card-foreground: oklch(0.94 0.02 230);
-  --popover: oklch(10.658% 0.01976 222.441);
+  --popover: oklch(0.25 0.055 240);
   --popover-foreground: oklch(0.94 0.02 230);
-  --primary: oklch(7.313% 0.04429 279.929);
+  --primary: oklch(0.62 0.2 240);
   --primary-foreground: oklch(0.1 0.03 240);
-  --secondary: oklch(11.355% 0.02145 224.639);
+  --secondary: oklch(0.3 0.055 240);
   --secondary-foreground: oklch(0.9 0.02 230);
   --muted: oklch(0.3 0.04 240);
   --muted-foreground: oklch(0.62 0.05 235);
