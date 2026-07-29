@@ -146,7 +146,6 @@ export default function Page() {
               <aside className="hidden 2xl:flex w-56 flex-col border-l border-border bg-card/40 backdrop-blur-sm shrink-0 overflow-y-auto">
                 <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
-                    <BookOpen className="size-4 text-primary" />
                     <span className="text-sm font-semibold text-foreground">
                       Reference
                     </span>
@@ -161,7 +160,6 @@ export default function Page() {
               <aside className="hidden lg:flex w-56 flex-col border-l border-border bg-card/50 backdrop-blur-sm shrink-0 overflow-y-auto">
                 <div className="p-3 border-b border-border">
                   <div className="flex items-center gap-2">
-                    <CalcIcon className="size-4 text-primary" />
                     <span className="text-sm font-semibold text-foreground">
                       Calculator
                     </span>
@@ -194,7 +192,7 @@ export default function Page() {
             <p className="text-xs text-muted-foreground">
               Developed by{" "}
               <span className="font-semibold text-foreground tracking-wide">
-                Yishak
+                Yishak Mekuannent
               </span>
             </p>
           </div>
