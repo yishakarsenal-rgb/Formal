@@ -7,7 +7,6 @@ import { ChapterContent } from "@/components/ChapterContent";
 import { Calculator } from "@/components/Calculator";
 import { QuickReference } from "@/components/QuickReference";
 import { MockExam } from "@/components/MockExam";
-import { ThreeDBackground } from "@/components/ThreeDBackground";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { chapters } from "@/lib/toc-data";
@@ -33,9 +32,6 @@ export default function Page() {
 
   return (
     <div className="flex flex-col min-h-screen bg-background relative">
-      {/* 3D floating background */}
-      <ThreeDBackground />
-
       {/* all foreground content sits above the 3D canvas */}
       <div className="relative z-10 flex flex-col min-h-screen">
         <AppHeader />
