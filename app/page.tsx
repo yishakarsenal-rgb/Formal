@@ -42,7 +42,6 @@ export default function Page() {
                   : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
-              <BookOpen className="size-4" />
               Study Guide
             </button>
             <button
@@ -54,7 +53,6 @@ export default function Page() {
                   : "border-transparent text-muted-foreground hover:text-foreground",
               )}
             >
-              <ClipboardList className="size-4" />
               Mock Exam
             </button>
           </div>
