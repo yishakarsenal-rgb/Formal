@@ -95,7 +95,7 @@ export function ConceptSectionView({ section }: ConceptSectionProps) {
         {section.formula && (
           <div className="mt-4 p-3 bg-primary/5 border border-primary/20 rounded-lg">
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-              Key Formula
+              Key Formulas
             </p>
             <code className="text-sm font-mono text-foreground font-medium">
               {section.formula}

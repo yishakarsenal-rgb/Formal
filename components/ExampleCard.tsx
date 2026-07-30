@@ -27,7 +27,7 @@ export function ExampleCard({ example, index }: ExampleCardProps) {
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="text-xs text-muted-foreground font-mono">
-              #{index + 1}
+              {index + 1}
             </span>
             <Badge
               className={cn(
