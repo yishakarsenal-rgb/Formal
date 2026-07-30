@@ -39,7 +39,7 @@ export function AppHeader() {
         <div className="flex items-center gap-3">
           <div>
             <h1 className="text-xl font-bold text-foreground leading-tight">
-              Theory of Computation
+              Formal Languages and Automata
             </h1>
             <p className="text-xs text-muted-foreground">
               Interactive Study Guide
