@@ -99,7 +99,7 @@ html.dark {
   --secondary-foreground: oklch(0.9 0.02 230);
   --muted: oklch(0.3 0.04 240);
   --muted-foreground: oklch(0.62 0.05 235);
-  --accent: oklch(0.33 0.08 225);
+  --accent: oklch(11.415% 0.01588 216.392);
   --accent-foreground: oklch(0.92 0.02 230);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 12%);
