@@ -10,7 +10,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Theory of Computation — Interactive Study Guide",
+  title: "Formal Language Course Study Guide",
   description:
     "Interactive study guide for Theory of Computation: Formal Languages, Automata, Grammars, and Turing Machines",
   icons: {
