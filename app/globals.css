@@ -95,7 +95,7 @@ html.dark {
   --popover-foreground: oklch(0.94 0.02 230);
   --primary: oklch(95.771% 0.01401 155.988);
   --primary-foreground: oklch(0.1 0.03 240);
-  --secondary: white;
+  --secondary: black;
   --secondary-foreground: oklch(0.9 0.02 230);
   --muted: oklch(0.3 0.04 240);
   --muted-foreground: oklch(0.62 0.05 235);
