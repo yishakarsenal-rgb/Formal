@@ -41,9 +41,7 @@ export function AppHeader() {
             <h1 className="text-xl font-bold text-foreground leading-tight">
               Formal Languages and Automata
             </h1>
-            <p className="text-xs text-muted-foreground">
-              Interactive Study Guide
-            </p>
+            <p className="text-xs text-muted-foreground">Study Guide</p>
           </div>
         </div>
 
