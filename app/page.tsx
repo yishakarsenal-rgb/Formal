@@ -169,7 +169,7 @@ export default function Page() {
         <footer className="border-t border-border bg-card/80 backdrop-blur-sm py-4 px-6 shrink-0">
           <div className="max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
             <p className="text-xs text-muted-foreground">
-              Theory of Computation Interactive Study Guide
+              Formal Language Course Study Guide
             </p>
             <p className="text-xs text-muted-foreground">
               Developed by{" "}
