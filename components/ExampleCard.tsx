@@ -54,7 +54,7 @@ export function ExampleCard({ example, index }: ExampleCardProps) {
           onClick={() => setShowSolution(!showSolution)}
           className="w-full gap-2"
         >
-          {showSolution ? "Hide Solution ▲" : "Show Solution ▼"}
+          {showSolution ? "Hide Solution " : "Show Solution "}
         </Button>
 
         {showSolution && (
